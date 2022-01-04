@@ -8,8 +8,11 @@ RUN set -e; \
     apt-get update; \
     apt-get dist-upgrade -y; \
     apt-get install -y --no-install-recommends \
-      tini \
-      apache2; \
+        tini \
+        apache2-bin \
+        apache2-data \
+        apache2-utils \
+        apache2; \
     apt-get autoremove -y; \
     apt-get clean; \
     rm -rvf /var/lib/apt/lists/*
