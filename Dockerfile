@@ -2,6 +2,8 @@ FROM ubuntu:20.04
 
 ENV PHP_FPM_SERVER php-fpm-server
 ENV PHP_FPM_PORT 9000
+ENV PHP_FPM_PING_URL /ping
+ENV PHP_FPM_STATUS_URL /status
 
 RUN set -e; \
     export DEBIAN_FRONTEND=noninteractive; \
