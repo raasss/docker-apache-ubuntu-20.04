@@ -39,8 +39,3 @@ jobs:
             --tag quay.io/raasss/apache-ubuntu-20.04:${GITHUB_REF_NAME} \
             --tag quay.io/raasss/apache-ubuntu-20.04:latest \
             --platform linux/amd64,linux/arm/v7,linux/arm64 .
-      # - name: Save Docker build cache
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: docker-cache
-      #     path: /var/lib/containers
