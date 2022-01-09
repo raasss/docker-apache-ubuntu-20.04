@@ -17,6 +17,11 @@ for TESTDIR in $(ls -d test*); do
     cp -f ../../Dockerfile .
     cp -f ../../servername.conf .
 
+    grep -e '^\s*image:\s' docker-compose.yml | awk '{print $2}' |\
+    while read -r I; do
+        docker pull "${I}"
+    done
+
     docker-compose build &>/dev/null
     docker-compose up -d &>/dev/null
     DOCKER_HOST_URL="http://$(docker-compose port apache 80)"
