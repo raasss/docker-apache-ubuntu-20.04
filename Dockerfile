@@ -31,7 +31,7 @@ RUN set -e; \
 
 COPY servername.conf /etc/apache2/conf-available/servername.conf
 RUN set -e; \
-    a2enmod mpm_event ssl rewrite proxy proxy_http proxy_fcgi; \
+    a2enmod mpm_event ssl rewrite proxy proxy_http proxy_fcgi deflate env expires filter ext_filter headers mime rewrite setenvif; \
     a2enconf servername
 
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
