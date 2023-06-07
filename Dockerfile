@@ -1,5 +1,8 @@
 FROM ubuntu:20.04
 
+ENV APACHE_HTTP_PORT=80
+ENV APACHE_HTTPS_PORT=443
+
 ENV PHP_FPM_SERVER php-fpm-server
 ENV PHP_FPM_PORT 9000
 ENV PHP_FPM_PING_URL /ping
@@ -38,6 +41,11 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN set -e; \
     chmod -v 0644 /etc/apache2/sites-available/000-default.conf; \
     chown -v root:root /etc/apache2/sites-available/000-default.conf
+
+COPY ports.conf /etc/apache2/ports.conf
+RUN set -e; \
+    chmod -v 0644 /etc/apache2/ports.conf; \
+    chown -v root:root /etc/apache2/ports.conf
 
 VOLUME [ "/var/www/html" ]
 
